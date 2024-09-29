@@ -6,10 +6,14 @@
   <title>Selamat Datang di Galeri Emeng</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
+      background-color: white; /* Mengganti background ke warna putih */
     }
+
+    /* Scroll to Top */
     #scrollToTop {
       position: fixed;
       bottom: 20px;
@@ -21,15 +25,17 @@
       padding: 15px 25px;
       border-radius: 50%;
       cursor: pointer;
+      transition: opacity 0.3s ease-in-out;
     }
+
+    /* Burger Menu */
     .burger-menu {
       display: none;
       position: absolute;
-      top: 60px; /* Adjust based on the navbar height */
+      top: 60px;
       right: 0;
-      background-color: #2d3748; /* Dark background */
-      border: 1px solid #4a5568; /* Border color */
-      border-radius: 0.375rem; /* Rounded corners */
+      background-color: #2d3748;
+      border-radius: 0.375rem;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       z-index: 10;
     }
@@ -37,129 +43,154 @@
       display: block;
     }
     .burger-item {
-      display: block;
       padding: 12px 16px;
-      color: white; /* Light text color */
+      color: white;
       text-decoration: none;
+      display: block;
     }
     .burger-item:hover {
-      background-color: #4a5568; /* Background color on hover */
+      background-color: #4a5568;
     }
-    .bar1, .bar2, .bar3 {
-      width: 24px;
-      height: 2px;
-      background-color: white;
-      margin: 4px 0;
-      transition: 0.4s;
+
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #1a202c;
+      color: white;
     }
-    .menu-open .bar1 {
-      transform: rotate(-45deg) translate(-5px, 6px);
+    .dark-mode .bg-white {
+      background-color: #2d3748;
     }
-    .menu-open .bar2 {
-      opacity: 0;
+    .dark-mode .text-gray-600 {
+      color: #a0aec0;
     }
-    .menu-open .bar3 {
-      transform: rotate(45deg) translate(-5px, -6px);
+
+    .dark-mode-toggle {
+      cursor: pointer;
+      margin-left: 20px;
+    }
+
+    /* Memperbesar div saat hover */
+    .image-container:hover {
+      transform: scale(1.05); /* Membesarkan div saat hover */
+      transition: transform 0.3s ease-in-out; /* Animasi transisi */
     }
   </style>
 </head>
-<body class="bg-gray-100">
+<body>
   <header class="bg-blue-500 text-white p-4 shadow-md flex justify-between items-center">
     <h1 class="text-3xl font-bold">Selamat Datang di Galeri Emeng</h1>
-    <button id="burger-btn" class="block md:hidden focus:outline-none flex flex-col items-center">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </button>
-    <div id="burger-menu" class="burger-menu">
-      <a href="#image1" class="burger-item">Emeng Pertama</a>
-      <a href="#image2" class="burger-item">Emeng Kedua</a>
-      <a href="#image3" class="burger-item">Emeng Ketiga</a>
-      <a href="#image4" class="burger-item">Emeng Keempat</a>
-      <a href="#image5" class="burger-item">Emeng Kelima</a>
-      <a href="#image6" class="burger-item">Emeng Keenam</a>
-      <a href="#image7" class="burger-item">Emeng Ketujuh</a>
-      <a href="#image8" class="burger-item">Emeng Kedelapan</a>
-      <a href="#image9" class="burger-item">Emeng Kesembilan</a>
-      <a href="#image10" class="burger-item">Emeng Kesepuluh</a>
+    <div class="flex items-center">
+      <!-- Navbar Links for Desktop -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="text-white hover:underline">Home</a>
+        <a href="video.html" class="text-white hover:underline">Video</a>
+      </nav>
+      
+      <!-- Burger Menu Button for Mobile (Hidden on Desktop) -->
+      <button id="burger-btn" class="focus:outline-none md:hidden">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+  
+      <!-- Dark Mode Toggle -->
+      <button id="darkModeToggle" class="dark-mode-toggle focus:outline-none ml-4">
+        <i id="mode-icon" class="fas fa-moon text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- Burger Menu for Mobile (Hidden on Desktop) -->
+    <div id="burger-menu" class="burger-menu md:hidden">
+      <a href="index.html" class="burger-item">Home</a>
+      <a href="video.html" class="burger-item">Video</a>
     </div>
   </header>
+  
+  
+  
 
   <div class="container mx-auto p-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <div id="image1" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri1.jpg" alt="Gallery Image 1" class="w-full h-auto rounded-t-lg">
+      <!-- Add gallery items here -->
+      <div id="" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="/image/galeri1.jpg" alt="Gallery Image 1" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Pertama</h2>
           <p class="mt-2 text-gray-600">Emeng dengan senyum manisnya</p>
         </div>
       </div>
-      <div id="image2" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri2.jpg" alt="Gallery Image 2" class="w-full h-auto rounded-t-lg">
+
+      <div id="image2" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="/image/galeri2.jpg" alt="Gallery Image 2" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Kedua</h2>
           <p class="mt-2 text-gray-600">Emeng dengan helm jeruknya yang lucu</p>
         </div>
       </div>
-            <div id="image3" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri3.jpg" alt="Gallery Image 3" class="w-full h-auto rounded-t-lg">
+
+      <div id="image3" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="image/galeri3.jpg" alt="Gallery Image 3" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Ketiga</h2>
           <p class="mt-2 text-gray-600">Emeng yang dipakyu oleh banyak orang :(</p>
         </div>
       </div>
-      <div id="image4" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri4.jpg" alt="Gallery Image 4" class="w-full h-auto rounded-t-lg">
+
+      <div id="image4" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="image/galeri4.jpg" alt="Gallery Image 4" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Keempat</h2>
           <p class="mt-2 text-gray-600">Ini emeng apa bejir ngakak</p>
         </div>
       </div>
-      <div id="image5" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri5.jpg" alt="Gallery Image 5" class="w-full h-auto rounded-t-lg">
+
+      <div id="image5" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="image/galeri5.jpg" alt="Gallery Image 5" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Kelima</h2>
           <p class="mt-2 text-gray-600">Emeng yang lagi ngambek ke kamu</p>
         </div>
       </div>
-      <div id="image6" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri6.jpg" alt="Gallery Image 6" class="w-full h-auto rounded-t-lg">
+
+      <div id="image6" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="/image/galeri6.jpg" alt="Gallery Image 6" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Keenam</h2>
           <p class="mt-2 text-gray-600">Emeng yang lagi bengong mikirin tugas</p>
         </div>
       </div>
-      <div id="image7" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri7.jpg" alt="Gallery Image 7" class="w-full h-auto rounded-t-lg">
+
+      <div id="image7" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="image/galeri7.jpg" alt="Gallery Image 7" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Ketujuh</h2>
           <p class="mt-2 text-gray-600">Emeng yang lagi fokus ngoding tugas bu retno</p>
         </div>
       </div>
-      <div id="image8" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri8.jpg" alt="Gallery Image 8" class="w-full h-auto rounded-t-lg">
+
+      <div id="image8" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="image/galeri8.jpg" alt="Gallery Image 8" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Kedelapan</h2>
           <p class="mt-2 text-gray-600">Emeng yang sudah pasrah dengan tugas</p>
         </div>
       </div>
-      <div id="image9" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri9.jpg" alt="Gallery Image 9" class="w-full h-auto rounded-t-lg">
+
+      <div id="image9" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="image/galeri9.jpg" alt="Gallery Image 9" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Kesembilan</h2>
-          <p class="mt-2 text-gray-600">Emeng pendek kaya bocil</p>
+          <p class="mt-2 text-gray-600">Emeng yang kecil kaya bocil</p>
         </div>
       </div>
-      <div id="image10" class="bg-white p-4 shadow-lg rounded-lg">
-        <img src="galeri10.jpg" alt="Gallery Image 10" class="w-full h-auto rounded-t-lg">
+      
+      <div id="image10" class="bg-white p-4 shadow-lg rounded-lg image-container fade-in">
+        <img src="image/galeri10.jpg" alt="Gallery Image 10" class="w-full h-auto rounded-t-lg hover:scale-105 transition-transform duration-300">
         <div class="p-4">
           <h2 class="text-xl font-bold">Emeng Kesepuluh</h2>
           <p class="mt-2 text-gray-600">Emeng yang bodok banget</p>
         </div>
       </div>
-    </div>
-  </div>
-
+      
+      <!-- Add other images here -->
     </div>
   </div>
 
@@ -169,35 +200,61 @@
     <div class="container mx-auto text-center px-4">
       <p>&copy; 2024 Galeri Emeng. Semua Hak Dilindungi.</p>
       <p>Follow us on 
-        <a href="#" class="text-indigo-400 hover:underline">Instagram</a>, 
-        <a href="#" class="text-indigo-400 hover:underline">Youtube</a>, 
-        and <a href="#" class="text-indigo-400 hover:underline">GitHub</a>.
+        <a href="https://www.instagram.com/nimpoxx/" class="text-indigo-400 hover:underline">Instagram</a>, 
+        <a href="https://github.com/dimasrpl1" class="text-indigo-400 hover:underline">Github</a>, and 
+        <a href="https://www.youtube.com/@dmcblood_5565" class="text-indigo-400 hover:underline">Youtube</a>.
       </p>
     </div>
   </footer>
 
   <script>
-    function scrollToTop() {
-      document.body.scrollTop = 0; 
-      document.documentElement.scrollTop = 0; 
-    }
+    // Dark Mode Toggle Script
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const modeIcon = document.getElementById('mode-icon');
 
-    window.onscroll = function() {
-      var scrollToTopButton = document.getElementById("scrollToTop");
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        scrollToTopButton.style.display = "block";
-      } else {
-        scrollToTopButton.style.display = "none";
-      }
-    };
-
-    const burgerBtn = document.getElementById('burger-btn');
-    const burgerMenu = document.getElementById('burger-menu');
-
-    burgerBtn.addEventListener('click', () => {
-      burgerMenu.classList.toggle('show');
-      burgerBtn.classList.toggle('menu-open'); // Toggle the animation class
+    darkModeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      modeIcon.classList.toggle('fa-sun');
+      modeIcon.classList.toggle('fa-moon');
     });
+
+    // Burger Menu Script
+  const burgerBtn = document.getElementById('burger-btn');
+  const burgerMenu = document.getElementById('burger-menu');
+
+  // Toggle burger menu visibility when clicked
+  burgerBtn.addEventListener('click', () => {
+    burgerMenu.classList.toggle('show');
+  });
+
+  // Function to close burger menu when screen size changes to desktop
+  function closeBurgerMenuOnResize() {
+    if (window.innerWidth >= 768) { // Tailwind 'md' breakpoint (768px)
+      burgerMenu.classList.remove('show');
+    }
+  }
+
+  // Event listener to monitor window resizing
+  window.addEventListener('resize', closeBurgerMenuOnResize);
+
+    // Scroll to Top Script
+    const scrollToTopButton = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopButton.style.display = 'block';
+      } else {
+        scrollToTopButton.style.display = 'none';
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   </script>
 </body>
 </html>
